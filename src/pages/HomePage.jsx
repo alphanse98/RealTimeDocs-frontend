@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import fetchAllDocuments from "../service/DocumentService";
+import {
+  fetchAllDocuments,
+  uploadlDocuments,
+  deleteDocument,
+} from "../service/DocumentService";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [document, setDocument] = useState([]);
-  const navigate = useNavigate(); 
+  const [selectedFile, setSelectedFile] = useState();
+  const navigate = useNavigate();
 
   const getDocs = async () => {
     const data = await fetchAllDocuments();
@@ -19,20 +24,78 @@ const HomePage = () => {
     getDocs();
   }, []);
 
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (file && file.type === "text/plain") {
+      const fileContent = await file.text(); // Read the file content as text
+
+      const delta = {
+        ops: [
+          { insert: fileContent }, // Use `insert` for plain text in Delta
+        ],
+      };
+
+      const payload = {
+        name: file.name,
+        doc: JSON.stringify(delta), // Store as Delta format
+      };
+
+      try {
+         await uploadlDocuments(payload);       
+        getDocs();
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+        throw error;
+      }
+    }
+  };
+
+  const handleDelete = async (docId) => {
+    console.log("docId >>>",docId)
+    await deleteDocument({ id : docId });
+    await getDocs();
+  };
+
   return (
-    <div>
+    <div className="homePage">
       HomePage
-      {document?.map((ele) => (
-        <div onClick={() => handleDocsClick(ele?.id)} className="profile-box" key={ele?.id}>
-          <div className="content">
-            <div>
-              <div className="name">{ele?.name}</div>
-              <div className="status">Document</div>
+      <div className="upload-section">
+        <label htmlFor="file-upload" className="upload-label">
+          Upload Document
+        </label>
+        <input
+          type="file"
+          id="file-upload"
+          className="upload-input"
+          accept=".doc,.docx,.pdf,.txt"
+          onChange={handleFileChange}
+        />
+      </div>
+      <div className="documents">
+        {document?.map((ele) => (
+          <div
+            onClick={() => handleDocsClick(ele?.id)}
+            className="profile-box"
+            key={ele?.id}
+          >
+            <div className="content">
+              <div>
+                <div className="name">{ele?.name}</div>
+                <div className="status">Document</div>
+              </div>
+              <button
+                onClick={(event) => {
+                  event.stopPropagation();
+                  handleDelete(ele?.id);
+                }}
+                className="delete-btn"
+              >
+                Delete
+              </button>
             </div>
-            <button className="delete-btn">Delete</button>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

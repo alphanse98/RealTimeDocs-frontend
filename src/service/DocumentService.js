@@ -1,5 +1,4 @@
 import api from "./api";
-import axios from "axios";
 
 // Function to fetch all documents
 const fetchAllDocuments = async () => {

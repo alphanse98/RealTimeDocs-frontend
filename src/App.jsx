@@ -1,21 +1,41 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CreateAccountPage from './pages/createAccountPage';
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 import DocumentEditor from './pages/DocumentPage';
+import PrivateRoute from './components/PrivateRoute';
+
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <div>
-        <Routes>
-          {/* Route for HomePage */}
-          <Route path="/" element={<HomePage />} />
+    <div>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/createAccount" element={<CreateAccountPage />} />
 
-          {/* Route for DocumentEditor, passing an id parameter */}
-          <Route path="/document/:id" element={<DocumentEditor />} />
-        </Routes>
-      </div>
-    </Router>
+        {/* Private Routes */}
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/document/:id"
+          element={
+            <PrivateRoute>
+              <DocumentEditor />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </div>
+  </Router>
   );
 }
 

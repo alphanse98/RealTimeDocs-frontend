@@ -41,8 +41,9 @@ const HomePage = () => {
       };
 
       try {
-         await uploadlDocuments(payload);       
+        await uploadlDocuments(payload);
         getDocs();
+        alert("Document uploaded successfully.");
       } catch (error) {
         console.error("Error fetching documents:", error);
         throw error;
@@ -51,9 +52,10 @@ const HomePage = () => {
   };
 
   const handleDelete = async (docId) => {
-    console.log("docId >>>",docId)
-    await deleteDocument({ id : docId });
+    await deleteDocument({ id: docId });
     await getDocs();
+    alert("Document deleted successfully.");
+    
   };
 
   return (

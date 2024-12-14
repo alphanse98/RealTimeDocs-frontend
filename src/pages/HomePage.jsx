@@ -55,12 +55,10 @@ const HomePage = () => {
     await deleteDocument({ id: docId });
     await getDocs();
     alert("Document deleted successfully.");
-    
   };
 
   return (
     <div className="homePage">
-      HomePage
       <div className="upload-section">
         <label htmlFor="file-upload" className="upload-label">
           Upload Document

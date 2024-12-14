@@ -22,7 +22,6 @@ const uploadlDocuments = async (param) => {
 };
 
 const deleteDocument = async (param) => {
-  console.log("service param >>>", param);
   try {
     const response = await api.post("documents/delete", param);
     return response.data;

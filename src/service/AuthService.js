@@ -3,8 +3,7 @@ import api from "./api";
 const login = async (param) => {
   try {
     const response = await api.post("user/login", param);
-    console.log("login", response.data.token)
-    sessionStorage.setItem("authToken", token);
+    sessionStorage.setItem("authToken", response.data.token);
     return response.data;
   } catch (error) {
     console.error("Error", error);

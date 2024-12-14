@@ -16,8 +16,7 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async () => {
-    login(auth);
-    navigate(`/home`);
+    login(auth).then(() => navigate(`/home`));
   };
 
   return (

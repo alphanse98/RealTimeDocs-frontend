@@ -6,6 +6,22 @@ body {
   /* background-color: #C2C2C2;  */
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 .documents{
   display: flex;
   flex-direction: column;
@@ -126,3 +142,121 @@ body {
   .login-button:hover {
     background-color: #0056b3;
   }
+
+  /* New styles scoped with unique class names */
+.new-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.new-form-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.new-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.new-form input,
+.new-form select,
+.new-form button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.new-form button {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.new-form button:hover {
+  background-color: #218838;
+}
+
+.new-form .error-message {
+  color: red;
+  font-size: 14px;
+}
+
+
+.new-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.new-form-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.new-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+.new-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Optional: Adds spacing between label and input */
+}
+
+.new-form input,
+.new-form textarea,
+.new-form button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.CancelBtn {
+  background-color: #ff6b6b  !important; 
+  color: white; 
+  border: none; 
+  border-radius: 5px;
+  padding: 10px 20px; 
+  font-size: 16px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+.CancelBtn:hover {
+  background-color: #e63939 !important; 
+}
+
+
+.new-form .error-message {
+  color: red;
+  font-size: 14px;
+}
+
+
+

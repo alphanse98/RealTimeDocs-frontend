@@ -3,7 +3,8 @@ import CreateAccountPage from "./pages/createAccountPage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
 import EmployeePage from "./pages/EmployeePage";
-import DepartmentPage from './pages/DepartmentPage';
+import DepartmentPage from "./pages/DepartmentPage";
+import Voice from "./pages/Voice";
 import "./App.css";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <div>
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={<Voice />} />
           <Route path="/createAccount" element={<CreateAccountPage />} />
 
           {/* Private Routes */}

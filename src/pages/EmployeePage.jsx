@@ -86,7 +86,8 @@ const EmployeePage = () => {
           {employees?.map((item) => (
             <tr key={item?.id}>
               <td>{item?.name}</td>
-              <td>{item?.departmentId}</td>
+              {/* <td>{item?.departmentId}</td> */}
+              <td>civil</td>
               <td>{item?.age}</td>
               <td>{item?.gender}</td>
               <td>{item?.nationality}</td>
